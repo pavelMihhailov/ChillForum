@@ -5,15 +5,8 @@
 
     using static ChillForum.Profiles.Data.DataConstants;
 
-    public class CreateProfileInputModel
+    public class EditProfileInputModel
     {
-        public string UserId { get; set; }
-
-        [Required]
-        [MinLength(MinUsernameLength)]
-        [MaxLength(MaxUsernameLength)]
-        public string Username { get; set; }
-
         [MaxLength(MaxProfileDescriptionLength)]
         public string Description { get; set; }
 

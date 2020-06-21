@@ -18,21 +18,30 @@
             this.mapper = mapper;
         }
 
-        public async Task<ProfileDetailsOutputModel> Details(string username)
-        {
-            return await this.mapper
-                .ProjectTo<ProfileDetailsOutputModel>(
-                        this.All()
-                        .Where(x => x.Username == username))
-                .FirstOrDefaultAsync();
-        }
-
         public async Task<T> GetByProfileId<T>(int id)
         {
             return await this.mapper
                 .ProjectTo<T>(
                         this.All()
                         .Where(x => x.Id == id))
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<T> GetByUserId<T>(string id)
+        {
+            return await this.mapper
+                .ProjectTo<T>(
+                        this.All()
+                        .Where(x => x.UserId == id))
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<ProfileDetailsOutputModel> Details(string username)
+        {
+            return await this.mapper
+                .ProjectTo<ProfileDetailsOutputModel>(
+                        this.All()
+                        .Where(x => x.Username == username))
                 .FirstOrDefaultAsync();
         }
     }
