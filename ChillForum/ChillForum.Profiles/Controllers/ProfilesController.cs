@@ -20,7 +20,6 @@
 
         public ProfilesController(
             IProfileService profile,
-            ITrophyService trophy,
             ICurrentUserService currentUser)
         {
             this.profiles = profile;

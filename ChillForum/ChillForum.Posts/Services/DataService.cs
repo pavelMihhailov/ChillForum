@@ -1,18 +1,18 @@
-﻿namespace ChillForum.Profiles.Services
+﻿namespace ChillForum.Posts.Services
 {
     using System.Linq;
     using System.Threading.Tasks;
-    using ChillForum.Profiles.Data;
+    using ChillForum.Posts.Data;
 
     public abstract class DataService<TEntity> : IDataService<TEntity>
         where TEntity : class
     {
-        protected DataService(ProfilesDbContext db)
+        protected DataService(PostsDbContext db)
         {
             this.Data = db;
         }
 
-        protected ProfilesDbContext Data { get; }
+        protected PostsDbContext Data { get; }
 
         public async Task Save(TEntity entity)
         {
