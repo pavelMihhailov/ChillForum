@@ -1,9 +1,12 @@
 ﻿namespace ChillForum.Common.Infrastructure
 {
+    using System;
+    using System.Reflection;
     using System.Text;
 
+    using ChillForum.Common.Infrastructure.AutoMapper;
     using ChillForum.Common.Services.Identity;
-
+    using global::AutoMapper;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -76,5 +79,14 @@
 
             return services;
         }
+
+        public static IServiceCollection AddAutoMapperProfile(
+            this IServiceCollection services,
+            Assembly assembly)
+            => services
+                .AddAutoMapper(
+                    (_, config) => config
+                        .AddProfile(new MappingProfile(assembly)),
+                    Array.Empty<Assembly>());
     }
 }

@@ -1,7 +1,8 @@
 ﻿namespace ChillForum.Posts.Models.Posts
 {
     using System.Collections.Generic;
-
+    using System.Linq;
+    using AutoMapper;
     using ChillForum.Common.Infrastructure.AutoMapper;
     using ChillForum.Posts.Data.Models;
 
@@ -15,6 +16,12 @@
 
         public string Content { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public int CommentsCount { get; set; }
+
+        public void Mapping(Profile mapper)
+            => mapper
+                .CreateMap<Post, PostOutputModel>()
+                .ForMember(p => p.CommentsCount, cfg => cfg
+                    .MapFrom(d => d.Comments.Count()));
     }
 }

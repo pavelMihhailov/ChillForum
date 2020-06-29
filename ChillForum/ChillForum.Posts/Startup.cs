@@ -5,6 +5,7 @@ namespace ChillForum.Posts
     using AutoMapper;
     using ChillForum.Common.Infrastructure;
     using ChillForum.Posts.Data;
+    using ChillForum.Posts.Services.Post;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -23,7 +24,9 @@ namespace ChillForum.Posts
         {
             services
                     .AddWebService<PostsDbContext>(this.Configuration)
-                    .AddAutoMapper(Assembly.GetExecutingAssembly());
+                    .AddAutoMapperProfile(Assembly.GetExecutingAssembly());
+
+            services.AddTransient<IPostService, PostService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) => app
