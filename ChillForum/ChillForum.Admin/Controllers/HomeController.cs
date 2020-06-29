@@ -12,7 +12,7 @@
         {
             if (this.User.IsAdministrator())
             {
-                //return this.RedirectToAction(nameof(StatisticsController.Index), "Statistics");
+                return this.RedirectToAction(nameof(PostsController.Index), "Posts");
             }
 
             return this.View();

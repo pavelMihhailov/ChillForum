@@ -4,6 +4,7 @@ namespace ChillForum.Admin
 
     using ChillForum.Admin.Infrastructure;
     using ChillForum.Admin.Services;
+    using ChillForum.Admin.Services.Identity;
     using ChillForum.Admin.Services.Posts;
     using ChillForum.Common.Infrastructure;
     using ChillForum.Common.Services.Identity;
@@ -42,9 +43,9 @@ namespace ChillForum.Admin
                 .AddRefitClient<IPostService>()
                 .WithConfiguration(serviceEndpoints.Posts);
 
-            //services
-            //    .AddRefitClient<IStatisticsService>()
-            //    .WithConfiguration(serviceEndpoints.Statistics);
+            services
+                .AddRefitClient<IIdentityService>()
+                .WithConfiguration(serviceEndpoints.Identity);
 
             //services
             //    .AddRefitClient<IDealersService>()

@@ -22,7 +22,7 @@
             this.jwtTokenGenerator = jwtTokenGenerator;
         }
 
-        public async Task<Result<User>> Register(UserInputModel userInput)
+        public async Task<Result<User>> Register(RegisterUserInputModel userInput)
         {
             var user = new User
             {
