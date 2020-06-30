@@ -1,0 +1,19 @@
+﻿@model PostOutputModel
+@{
+    ViewData["Title"] = "Post Details";
+}
+
+<div class="container">
+    <div class="card" style="width: 18rem;">
+        <span>AuthorId: @Model.AuthorId</span>
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <p class="card-text">@Model.Content</p>
+            @if (this.User.IsAdministrator())
+            {
+                <a asp-area="" asp-controller="Posts" asp-action="Delete"
+                   asp-route-postId="@Model.Id" class="btn btn-danger">Delete Post</a>
+            }
+        </div>
+    </div>
+</div>
